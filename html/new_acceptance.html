@@ -1,0 +1,400 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>工程质量验收</title>
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../font/iconfont.css" />
+		<script type="text/javascript" src="../script/jquery.min.js"></script>
+	</head>
+	<body>
+		<header class="aui-bar aui-bar-nav fixed-bar">
+			<a class="aui-pull-left aui-btn" onclick="javascript:history.back(-1);">
+				<span class="icon iconfont icon-fanhui"></span>
+			</a>
+			<div class="aui-title">新增验收项</div>
+		</header>
+		<div class="blank"></div>
+		<ul class="aui-list aui-form-list">
+			<li class="aui-list-header">选择验收项目</li>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						检验时间
+					</div>
+					<div class="aui-list-item-input">
+						<input type="date">
+					</div>
+				</div>
+			</li>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						施工项目
+					</div>
+					<div id="show_pro" class="aui-list-item-input set_item">
+						<input type="text" placeholder="输入项目编号或名称查询" disabled="disabled"><span><i></i></span>
+					</div>
+					<!-- 输入关键字模糊查询 -->
+				</div>
+			</li>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						施工节点
+					</div>
+					<div class="aui-list-item-input">
+						<select>
+							<option>请选择</option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+						</select>
+					</div>
+				</div>
+			</li>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						期区
+					</div>
+					<div class="aui-list-item-input">
+						<select>
+							<option>请选择</option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+						</select>
+					</div>
+				</div>
+			</li>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						验收人
+					</div>
+					<div class="aui-list-item-input">
+						<input type="text" placeholder="默认带出">
+					</div>
+				</div>
+			</li>
+			<li class="aui-list-header">选择验收分项</li>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						验收分项
+					</div>
+					<div id="show_subitem" class="aui-list-item-input set_item">
+						<input type="text" placeholder="请选择" disabled="disabled">
+						<span><i></i></span>
+					</div>
+				</div>
+			</li>
+			<li class="aui-list-header">检验批基础数据</li>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						检验批部位
+					</div>
+					<div class="aui-list-item-input">
+						<input type="text" placeholder="请输入">
+					</div>
+				</div>
+			</li>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						工程常用词
+					</div>
+					<div class="aui-list-item-input btn_group">
+						<div class="aui-btn aui-btn-info">基础</div>
+						<div class="aui-btn">基槽</div>
+						<div class="aui-btn">地基</div>
+					</div>
+				</div>
+			</li>
+			<li class="aui-list-item">
+				<div class="aui-list-item-inner">
+					<div class="aui-list-item-label">
+						检验批容量
+					</div>
+					<div class="aui-list-item-input">
+						<input type="text" placeholder="请输入">
+						<div class="set_unit">
+							<select>
+								<option>平方米</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+							</select>
+							<i class="icon iconfont icon-caret-down"></i>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="aui-list-header">
+				工程施工图
+				<div id="show_gallery" class="aui-btn aui-btn-info aui-btn-outlined">从图库选择</div>
+			</li>
+			<li class="aui-list-item aui-padded-10">
+				<div class="aui-row aui-row-padded ">
+					<div class="aui-col-xs-4 img_edit">
+						<img src="../image/demo.jpg" />
+						<i class="icon iconfont icon-guanbi1"></i>
+					</div>
+					<div class="aui-col-xs-4 img_edit">
+						<img src="../image/demo.jpg" />
+						<i class="icon iconfont icon-guanbi1"></i>
+					</div>
+					<div class="aui-col-xs-4">
+						<a class="add_image">
+
+							<p><i class="icon iconfont icon-plus"></i><br>本地上传</p>
+						</a>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="blank2"></div>
+		<a id="start_acceptance" class="bottom_btn">
+			确认并开始验收
+		</a>
+		<!--选择施工项目-->
+		<div id="set_pro" class="popup">
+			<div class="black_bj"></div>
+			<div class="set_project">
+				<div class="set_title">
+					<i class="icon iconfont icon-guanbi1 close"></i>
+					选择施工项目
+				</div>
+				<div class="aui-searchbar" id="search">
+					<div class="aui-searchbar-input aui-border-radius">
+						<i class="icon iconfont icon-search">&nbsp;&nbsp;</i>
+						<input type="search" placeholder="输入项目编号或名称查询" id="search-input">
+						<div class="aui-searchbar-clear-btn">
+							<i class="icon iconfont icon-guanbi1"></i>
+						</div>
+					</div>
+					<div class="aui-searchbar-btn" tapmode>取消</div>
+				</div>
+				<ul class="project_list">
+					<li class="set">
+						<span>ZZ020018001|宝现投资_总部</span>
+						<i class="icon iconfont icon-xuanze"></i>
+					</li>
+					<li>
+						<span>ZZ020018001|宝现投资_总部</span>
+						<i class="icon iconfont icon-xuanze"></i>
+					</li>
+					<li>
+						<span>ZZ020018001|宝现投资_总部</span>
+						<i class="icon iconfont icon-xuanze"></i>
+					</li>
+					<li>
+						<span>ZZ020018001|宝现投资_总部</span>
+						<i class="icon iconfont icon-xuanze"></i>
+					</li>
+					<li>
+						<span>ZZ020018001|宝现投资_总部</span>
+						<i class="icon iconfont icon-xuanze"></i>
+					</li>
+					<li>
+						<span>ZZ020018001|宝现投资_总部</span>
+						<i class="icon iconfont icon-xuanze"></i>
+					</li>
+					<li>
+						<span>ZZ020018001|宝现投资_总部</span>
+						<i class="icon iconfont icon-xuanze"></i>
+					</li>
+					<li>
+						<span>ZZ020018001|宝现投资_总部</span>
+						<i class="icon iconfont icon-xuanze"></i>
+					</li>
+					<li>
+						<span>ZZ020018001|宝现投资_总部</span>
+						<i class="icon iconfont icon-xuanze"></i>
+					</li>
+					<li>
+						<span>ZZ020018001|宝现投资_总部</span>
+						<i class="icon iconfont icon-xuanze"></i>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+		<!--选择施工项目 end-->
+		<!--选择验收分项-->
+		<div id="set_subitem" class="popup">
+			<div class="black_bj"></div>
+			<div class="set_project">
+				<div class="set_title">
+					<i class="icon iconfont icon-guanbi1 close"></i>
+					选择验收分项
+				</div>
+				<div class="aui-tab" id="tab">
+					<div class="aui-tab-item">地基与基础</div>
+					<div class="aui-tab-item">地基</div>
+					<div class="aui-tab-item">砂和砂石地基</div>
+					<div class="aui-tab-item aui-active">请选择</div>
+				</div>
+				<ul class="project_list">
+					<li class="set">
+						<span>素土、灰土地基质量检验记录</span>
+						<i class="icon iconfont icon-xuanze"></i>
+					</li>
+					<li>
+						<span>素土、灰土地基质量检验记录</span>
+						<i class="icon iconfont icon-xuanze"></i>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+		<!--选择验收分项 end-->
+		<!-- 从图库选择 -->
+		<div id="gallery" class="gallery">
+			<header class="aui-bar aui-bar-nav fixed-bar">
+				<a class="aui-pull-left aui-btn" id="back">
+					<span class="icon iconfont icon-fanhui"></span>
+				</a>
+				<div class="aui-title">选择施工图纸</div>
+			</header>
+			<div class="blank"></div>
+			<ul class="drawings_list">
+				<li class="set_img">
+					<img src="../image/demo.jpg" />
+					<i class="icon iconfont icon-search-plus"></i>
+					<p>图纸名称</p>
+					<input class="aui-checkbox" type="checkbox" checked="">
+				</li>
+				<li>
+					<img src="../image/demo.jpg" />
+					<i class="icon iconfont icon-search-plus"></i>
+					<p>图纸名称</p>
+					<input class="aui-checkbox" type="checkbox">
+				</li>
+				<li>
+					<img src="../image/demo.jpg" />
+					<i class="icon iconfont icon-search-plus"></i>
+					<p>图纸名称</p>
+					<input class="aui-checkbox" type="checkbox">
+				</li>
+			</ul>
+			<div class="big_img">
+				<div class="black_full"></div>
+				<img src="../image/demo.jpg" />
+			</div>
+			<a class="bottom_btn" id="complete">
+				完成(1)
+			</a>
+		</div>
+		<!--  从图库选择 end-->
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/aui-tab.js"></script>
+	<script type="text/javascript">
+		//显示施工项目
+		$(document).ready(function() {
+			$("#show_pro").click(function() {
+				$("#set_pro").show();
+			});
+		});
+		$(document).ready(function() {
+			$(".close").click(function() {
+				$("#set_pro").hide();
+			});
+		});
+		//显示验收分项
+		$(document).ready(function() {
+			$("#show_subitem").click(function() {
+				$("#set_subitem").show();
+			});
+		});
+		$(document).ready(function() {
+			$(".close").click(function() {
+				$("#set_subitem").hide();
+			});
+		});
+		//显示施工图库
+		$(document).ready(function() {
+			$("#show_gallery").click(function() {
+				$("#gallery").show();
+			});
+		});
+		$(document).ready(function() {
+			$("#back").click(function() {
+				$("#gallery").hide();
+			});
+		});
+		$(document).ready(function() {
+			$("#complete").click(function() {
+				$("#gallery").hide();
+			});
+		});
+		//放大图片
+		$(document).ready(function() {
+			$(".drawings_list li i").click(function() {
+				$(".big_img").show();
+			});
+		});
+		$(document).ready(function() {
+			$(".big_img").click(function() {
+				$(".big_img").hide()();
+			});
+		});
+		//
+		$("#start_acceptance").click(function() {
+			location.href = 'acceptance_record.html';
+		});
+		//
+
+		apiready = function() {
+			api.parseTapmode();
+		}
+		var tab = new auiTab({
+			element: document.getElementById("tab"),
+		}, function(ret) {
+			console.log(ret)
+		});
+		var searchBar = document.querySelector(".aui-searchbar");
+		var searchBarInput = document.querySelector(".aui-searchbar input");
+		// var searchBarBtn = document.querySelector(".aui-searchbar .aui-searchbar-btn");
+		var searchBarClearBtn = document.querySelector(".aui-searchbar .aui-searchbar-clear-btn");
+		if (searchBar) {
+			searchBarInput.onclick = function() {
+				searchBarBtn.style.marginRight = 0;
+			}
+			searchBarInput.oninput = function() {
+				if (this.value.length) {
+					searchBarClearBtn.style.display = 'block';
+					searchBarBtn.classList.add("aui-text-info");
+					// searchBarBtn.textContent = "搜索";
+				} else {
+					searchBarClearBtn.style.display = 'none';
+					searchBarBtn.classList.remove("aui-text-info");
+					// searchBarBtn.textContent = "取消";
+				}
+			}
+		}
+		searchBarClearBtn.onclick = function() {
+			this.style.display = 'none';
+			searchBarInput.value = '';
+			searchBarBtn.classList.remove("aui-text-info");
+			// searchBarBtn.textContent = "取消";
+		}
+		searchBarBtn.onclick = function() {
+			var keywords = searchBarInput.value;
+			if (keywords.length) {
+				searchBarInput.blur();
+				document.getElementById("search-keywords").textContent = keywords;
+			} else {
+				this.style.marginRight = "-" + this.offsetWidth + "px";
+				searchBarInput.value = '';
+				searchBarInput.blur();
+			}
+		};
+	</script>
+</html>
